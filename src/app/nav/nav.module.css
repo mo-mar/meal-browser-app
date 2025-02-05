@@ -6,4 +6,25 @@
   box-sizing: border-box;
   background-color: var(--secondary-color);
   color: white;
+
+  & a {
+    position: relative;
+  }
+
+  & a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: white;
+    left: 0;
+    bottom: -4px;
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  & a:hover::after {
+    transform: scaleX(1);
+  }
 }

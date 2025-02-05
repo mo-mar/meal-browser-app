@@ -1,42 +1,27 @@
+@import url('@/app/reset.css');
+@import url('@/app/normalize.css');
+
+/* Primary and Accent Colors */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  --hunyadi-yellow: #f6bd60ff;
+  --linen: #f7ede2ff;
+  --tea-rose-red: #f5cac3ff;
+  --cambridge-blue: #84a59dff;
+  --light-coral: #f28482ff;
+  --primary-color: var(--hunyadi-yellow);
+  --accent-color: var(--tea-rose-red);
+  --secondary-color: var(--cambridge-blue);
+  --background-color: var(--linen);
+  --error-color: var(--light-coral);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: black;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
+a,
+a:visited {
+  color: var(--white);
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

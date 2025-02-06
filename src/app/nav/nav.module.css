@@ -1,8 +1,13 @@
+:root {
+  --nav-height: 64px;
+}
+
 .nav-list {
   list-style: none;
   display: flex;
   gap: 12px;
   padding: 24px 12px;
+  height: var(--nav-height);
   box-sizing: border-box;
   background-color: var(--secondary-color);
   color: white;

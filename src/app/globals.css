@@ -27,3 +27,12 @@ a:visited {
   color: var(--white);
   text-decoration: none;
 }
+
+main {
+  padding: 32px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}

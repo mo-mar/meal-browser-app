@@ -1,4 +1,3 @@
-'use server';
 import type { Meal } from '@root/types';
 
 export async function getMeal(query: string): Promise<Meal[]> {

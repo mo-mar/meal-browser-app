@@ -1,13 +1,14 @@
 'use client';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import styles from '@/app/search/search.module.css';
 import { getMeal } from '@/app/actions';
 import type { Meal } from '@root/types';
+import MealElement from '@/app/meals/components/MealElement';
 
 export default function Search() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Meal[]>([]);
 
-  const handleSubmit = (e: SubmitEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
 
@@ -36,8 +37,8 @@ export default function Search() {
       </form>
 
       {data
-        ? data.map((d: meal) => {
-            return <p key={d.idMeal}>{d.strMeal}</p>;
+        ? data.map((item: Meal, index) => {
+            return <MealElement key={index} meal={item} />;
           })
         : null}
     </>

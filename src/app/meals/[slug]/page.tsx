@@ -1,6 +1,7 @@
 import { getMealById } from '@/app/actions';
 import type { Meal } from '@root/types';
 import styles from '@/app/meals/components/meal.module.css';
+import MealImage from '@/app/meals/components/MealImage';
 
 const getIngredients = (meal: Meal): string[] => {
   const ingredients = [];
@@ -33,6 +34,13 @@ export default async function MealPage({
   return (
     <div>
       <h1>{meal?.strMeal}</h1>
+
+      <MealImage meal={meal} />
+
+      <div>
+        <p>Instructions</p>
+        <p>{meal.strInstructions}</p>
+      </div>
 
       <div>
         Ingredients:

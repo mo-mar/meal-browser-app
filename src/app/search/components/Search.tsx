@@ -3,10 +3,12 @@ import { FormEvent, useState } from 'react';
 import styles from '@/app/search/search.module.css';
 import { getMeal } from '@/app/actions';
 import type { Meal } from '@root/types';
+import LoadingSpinner from './LoadingSpinner';
 import MealElement from '@/app/meals/components/MealElement';
 
 export default function Search() {
   const [data, setData] = useState<Meal[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -17,8 +19,10 @@ export default function Search() {
 
     if (!form || !query) return;
 
+    setIsLoading(true);
     getMeal(query).then((data: Array<Meal>) => {
       setData(data);
+      setIsLoading(false);
     });
   };
 
@@ -36,11 +40,13 @@ export default function Search() {
         </button>
       </form>
 
-      {data
-        ? data.map((item: Meal, index) => {
-            return <MealElement key={index} meal={item} />;
-          })
-        : null}
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        data?.map((item: Meal, index) => {
+          return <MealElement key={index} meal={item} />;
+        })
+      )}
     </>
   );
 }

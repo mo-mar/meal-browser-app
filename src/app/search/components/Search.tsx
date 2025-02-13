@@ -9,6 +9,7 @@ import MealElement from '@/app/meals/components/MealElement';
 export default function Search() {
   const [data, setData] = useState<Meal[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasNoResults, setHasNoResults] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -21,6 +22,11 @@ export default function Search() {
 
     setIsLoading(true);
     getMeal(query).then((data: Array<Meal>) => {
+      setHasNoResults(false);
+
+      if (!data.length) {
+        setHasNoResults(true);
+      }
       setData(data);
       setIsLoading(false);
     });
@@ -47,6 +53,8 @@ export default function Search() {
           return <MealElement key={index} meal={item} />;
         })
       )}
+
+      {hasNoResults ? <div>No results found</div> : null}
     </>
   );
 }

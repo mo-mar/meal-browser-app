@@ -17,6 +17,10 @@ const getIngredients = (meal: Meal): string[] => {
   return ingredients;
 };
 
+const formatInstructions = (string: string): string => {
+  return string;
+};
+
 export default async function MealPage({
   params,
 }: {
@@ -32,27 +36,39 @@ export default async function MealPage({
   }
 
   return (
-    <div>
-      <h1>{meal?.strMeal}</h1>
+    <div className={styles['meal-page-container']}>
+      <div className={styles['meal-header']}>
+        <div>
+          <h1>{meal?.strMeal}</h1>
 
-      <MealImage meal={meal} />
+          <div className="flex flex-column gap-8">
+            {meal.strCategory ? <p>Category: {meal.strCategory}</p> : null}
+            {meal.strArea ? <p>Cuisine: {meal.strArea}</p> : null}
+          </div>
+        </div>
 
-      <div>
-        <p>Instructions</p>
-        <p>{meal.strInstructions}</p>
+        <div className={styles['meal-image']}>
+          <MealImage meal={meal} />
+        </div>
       </div>
 
-      <div>
-        Ingredients:
-        {getIngredients(meal).length ? (
-          <div className={styles['ingredients-list']}>
-            {getIngredients(meal).map((ingredient, index) => (
-              <div key={index} className={styles['ingredient']}>
-                {ingredient}
-              </div>
-            ))}
-          </div>
-        ) : null}
+      <div className={styles['meal-info']}>
+        <div className="flex flex-column gap-8">
+          <span className={styles['label']}>Ingredients:</span>
+          {getIngredients(meal).length ? (
+            <div className={styles['ingredients-list']}>
+              {getIngredients(meal).map((ingredient, index) => (
+                <div key={index} className={styles['ingredient']}>
+                  {ingredient}
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+        <div className="flex flex-column gap-8">
+          <p className={styles['label']}>Instructions</p>
+          <p>{formatInstructions(meal.strInstructions)}</p>
+        </div>
       </div>
     </div>
   );

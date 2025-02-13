@@ -1,5 +1,6 @@
 @import url('@/app/reset.css');
 @import url('@/app/normalize.css');
+@import url('@/app/utils.css');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 /* Primary and Accent Colors */

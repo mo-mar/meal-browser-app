@@ -1,19 +1,49 @@
 .meal {
-  width: 200px;
-  padding: 16px;
+  padding: 24px;
+  width: 600px;
   box-sizing: border-box;
   border-radius: 8px;
   margin: 20px 0;
+  border: 1px solid var(--secondary-color);
+  display: flex;
+  gap: 16px;
 
   .title {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 600;
     margin: 0;
   }
 
-  .ingredients {
+  .meal-image {
+    width: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .ingredients-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 100px;
+    height: 100%;
+    flex: 1;
+    overflow: auto;
+    gap: 8px;
+  }
+
+  .ingredient {
+    display: flex;
+    align-items: center;
+  }
+
+  .meal-info {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1;
   }
 }

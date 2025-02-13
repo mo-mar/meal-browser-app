@@ -16,3 +16,23 @@ export async function getMeal(query: string): Promise<Meal[]> {
 
   return [];
 }
+
+export async function getMealById(id: number): Promise<Meal | null> {
+  debugger;
+
+  try {
+    const res = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+    );
+
+    const { meals } = await res.json();
+    debugger;
+    if (meals.length) {
+      return meals[0];
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+
+  return null;
+}

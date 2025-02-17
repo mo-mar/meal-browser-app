@@ -47,14 +47,14 @@ export default async function MealPage({
           </div>
         </div>
 
-        <div className={styles['meal-image']}>
+        <div className={styles['meal-image-container']}>
           <MealImage meal={meal} />
         </div>
       </div>
 
       <div className={styles['meal-info']}>
         <div className="flex flex-column gap-8">
-          <span className={styles['label']}>Ingredients:</span>
+          <span className={`${styles.label} margin-b-8`}>Ingredients:</span>
           {getIngredients(meal).length ? (
             <div className={styles['ingredients-list']}>
               {getIngredients(meal).map((ingredient, index) => (
@@ -66,8 +66,10 @@ export default async function MealPage({
           ) : null}
         </div>
         <div className="flex flex-column gap-8">
-          <p className={styles['label']}>Instructions</p>
-          <p>{formatInstructions(meal.strInstructions)}</p>
+          <p className={`${styles['label']} margin-b-8`}>Instructions</p>
+          <p className={styles['instructions-text']}>
+            {formatInstructions(meal.strInstructions)}
+          </p>
         </div>
       </div>
     </div>
